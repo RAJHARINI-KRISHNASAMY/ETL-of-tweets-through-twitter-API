@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <style>
+      .center {
+        margin: auto;
+        width: 60%;
+        border: 3px solid #213bad;
+        padding: 10px;
+      }
+      </style>
+      </head>
+   <body style="background-color:powderblue;">
+      <form action = "http://localhost:5000/twitter" method = "POST">
+         <div class="center">
+         <p>Twitter</p>
+         <p>Text <input type = "text" name = "Name" /></p>
+         <p><input type = "submit" name= "submit_button" value = "Scrap" /></p>
+         <p><input type = "submit" name="submit_button" value = "Post" /></p>
+      </div>
+      </form>
+      <p></p>
+      <form action = "http://localhost:5000/reddit" method = "POST">
+         <div class="center">
+         <p>Reddit</p>
+         <p>Text <input type = "text" name = "Name" /></p>
+         <p><input type = "submit" name= "submit_button" value = "Scrap" /></p>
+         <p><input type = "submit" name="submit_button" value = "Post" /></p>
+      </div>
+      </form>
+      
+   </body>
+</html>
