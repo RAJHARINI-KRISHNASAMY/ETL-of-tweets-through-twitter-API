@@ -14,7 +14,7 @@ def twitter():
         if request.form['submit_button'] == 'Scrap':
             key=request.form['Name']
             datadict=tweetScrape(key)
-            db = MongoClient("mongodb://BDAT1004:Password@cluster0-shard-00-00.gzlae.mongodb.net:27017,cluster0-shard-00-01.gzlae.mongodb.net:27017,cluster0-shard-00-02.gzlae.mongodb.net:27017/Mydatabase3?ssl=true&replicaSet=atlas-qnmzak-shard-0&authSource=admin&retryWrites=true&w=majority")
+            db = MongoClient("")
             x = db["Mydatabase3"]["Tweet_scrape"].insert_many(datadict)
             return render_template('home.html')
         elif request.form['submit_button'] == 'Post':
@@ -27,7 +27,7 @@ def reddit():
         if request.form['submit_button'] == 'Scrap':
             key=request.form['Name']
             datadict=redditScrape(key)
-            db = MongoClient("mongodb://BDAT1004:Password@cluster0-shard-00-00.gzlae.mongodb.net:27017,cluster0-shard-00-01.gzlae.mongodb.net:27017,cluster0-shard-00-02.gzlae.mongodb.net:27017/Mydatabase3?ssl=true&replicaSet=atlas-qnmzak-shard-0&authSource=admin&retryWrites=true&w=majority")
+            db = MongoClient("")
             x = db["Mydatabase3"]["Reddit_scrape"].insert_many(datadict)
             return render_template('home.html')
         elif request.form['submit_button'] == 'Post':
@@ -39,12 +39,12 @@ def reddit():
 
 
 def redditScrape(key):
-    Client_ID="Esg_SY4QYiDtWw"
-    Client_SECRET="n-YaZIFn-7LTKmaOhje4RY5eePJ8xw"
-    PASSWORD="92~h'$nn34mSqxe"
-    USER_AGENT="test (by /u/BatPrestigious9187 )"
-    USERNAME='BatPrestigious9187'
-    reddit = praw.Reddit(client_id='Esg_SY4QYiDtWw', client_secret='n-YaZIFn-7LTKmaOhje4RY5eePJ8xw', user_agent='my_user_agent')
+    Client_ID=""
+    Client_SECRET=""
+    PASSWORD=""
+    USER_AGENT=""
+    USERNAME=''
+    reddit = praw.Reddit(client_id='', client_secret='', user_agent='my_user_agent')
     posts = []
     ml_subreddit = reddit.subreddit(key)
     for post in ml_subreddit.hot(limit=100):
@@ -57,7 +57,7 @@ def redditScrape(key):
     return datadict
 
 def redditPost(msg):
-    reddit = praw.Reddit(client_id='Esg_SY4QYiDtWw',client_secret='n-YaZIFn-7LTKmaOhje4RY5eePJ8xw',user_agent='test by /u/BatPrestigious9187 ',redirect_uri='http://localhost:8080',refresh_token='826684171550-q4OO9oVV1iDLvRsm0Z1THrfgD-jD2w')
+    reddit = praw.Reddit(client_id='',client_secret='',user_agent=' ',redirect_uri='http://localhost:8080',refresh_token='')
     subr = 'pythonsandlot'
     subreddit = reddit.subreddit(subr) # Initialize the subreddit to a variable
  
@@ -77,10 +77,10 @@ def redditPost(msg):
 
 
 def tweetScrape(userid):
-    consumer_key = "KuuPY4dskxE1YP9ymgGsv844A"
-    consumer_secret = "56DRD0MK57mxTKQe5r1JA4YD5JOqlqXceXEQczExW8L95aVC1l"
-    access_token = "727087799304884225-BkvQsF3IJ4Il8GxmNwKP9FEVJlp35OJ"
-    access_token_secret = "lzhr3ErGT5NsHus2kkXtl8ECrQbgVwGEoLLj9JTkrgL1n"
+    consumer_key = ""
+    consumer_secret = ""
+    access_token = ""
+    access_token_secret = ""
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth,wait_on_rate_limit=True)
@@ -103,10 +103,10 @@ def tweetScrape(userid):
     datadict = df.to_dict('records')
     return datadict
 def tweetPost(msg):
-    consumer_key = "KuuPY4dskxE1YP9ymgGsv844A"
-    consumer_secret = "56DRD0MK57mxTKQe5r1JA4YD5JOqlqXceXEQczExW8L95aVC1l"
-    access_token = "727087799304884225-BkvQsF3IJ4Il8GxmNwKP9FEVJlp35OJ"
-    access_token_secret = "lzhr3ErGT5NsHus2kkXtl8ECrQbgVwGEoLLj9JTkrgL1n"
+    consumer_key = ""
+    consumer_secret = ""
+    access_token = ""
+    access_token_secret = ""
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
